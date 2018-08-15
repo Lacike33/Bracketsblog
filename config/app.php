@@ -150,7 +150,7 @@ return [
         /*
          * Package Service Providers...
          */
-        Barryvdh\Debugbar\ServiceProvider::class,
+//        Barryvdh\Debugbar\ServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
 
         /*
@@ -212,7 +212,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Flash' => Laracasts\Flash\Flash::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+//        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];
