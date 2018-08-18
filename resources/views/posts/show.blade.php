@@ -26,8 +26,6 @@
             <div class="col-lg-8 col-md-10 mx-auto">
                 {!! $post->content  !!}
             </div>
-            {{ config('app.env') }}
-
         </div>
     </div>
 
