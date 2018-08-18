@@ -13,7 +13,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return 'Tu budu vylistovane vsetky posts ..';
+        return view('posts.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.new');
     }
 
     /**

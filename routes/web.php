@@ -13,14 +13,22 @@
 
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
+//
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+Route::get('/','PostController@index')->name('home');
+
+Route::get('/contact', function () {
+//    return view('welcome');
+    return view('contact');
+})->name('contact');
+Route::get('/zadanie', function () {
+    return view('zadanie');
+})->name('zadanie');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('post','PostController');

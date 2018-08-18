@@ -906,13 +906,13 @@
     <table id="227" parent="4" name="comments">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="228" parent="4" name="comments_tags">
+    <table id="228" parent="4" name="migrations">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="229" parent="4" name="migrations">
+    <table id="229" parent="4" name="password_resets">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="230" parent="4" name="password_resets">
+    <table id="230" parent="4" name="post_tag">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
     <table id="231" parent="4" name="posts">
@@ -968,83 +968,83 @@
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="242" parent="228" name="post_id">
-      <Position>1</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="243" parent="228" name="tag_id">
-      <Position>2</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="244" parent="228" name="comments_tags_post_id_foreign">
-      <ColNames>post_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="245" parent="228" name="comments_tags_tag_id_foreign">
-      <ColNames>tag_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <foreign-key id="246" parent="228" name="comments_tags_post_id_foreign">
-      <ColNames>post_id</ColNames>
-      <RefSchemaName>larablog</RefSchemaName>
-      <RefTableName>posts</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="247" parent="228" name="comments_tags_tag_id_foreign">
-      <ColNames>tag_id</ColNames>
-      <RefSchemaName>larablog</RefSchemaName>
-      <RefTableName>tags</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="248" parent="229" name="id">
+    <column id="242" parent="228" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="229" name="migration">
+    <column id="243" parent="228" name="migration">
       <Position>2</Position>
       <DataType>varchar(191)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="229" name="batch">
+    <column id="244" parent="228" name="batch">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="251" parent="229" name="PRIMARY">
+    <key id="245" parent="228" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="252" parent="230" name="email">
+    <column id="246" parent="229" name="email">
       <Position>1</Position>
       <DataType>varchar(191)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="230" name="token">
+    <column id="247" parent="229" name="token">
       <Position>2</Position>
       <DataType>varchar(191)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="254" parent="230" name="created_at">
+    <column id="248" parent="229" name="created_at">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="255" parent="230" name="password_resets_email_index">
+    <index id="249" parent="229" name="password_resets_email_index">
       <ColNames>email</ColNames>
       <Type>btree</Type>
     </index>
+    <column id="250" parent="230" name="post_id">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="251" parent="230" name="tag_id">
+      <Position>2</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="252" parent="230" name="post_tag_post_id_foreign">
+      <ColNames>post_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="253" parent="230" name="post_tag_tag_id_foreign">
+      <ColNames>tag_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <foreign-key id="254" parent="230" name="post_tag_post_id_foreign">
+      <ColNames>post_id</ColNames>
+      <RefSchemaName>larablog</RefSchemaName>
+      <RefTableName>posts</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="255" parent="230" name="post_tag_tag_id_foreign">
+      <ColNames>tag_id</ColNames>
+      <RefSchemaName>larablog</RefSchemaName>
+      <RefTableName>tags</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
     <column id="256" parent="231" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
