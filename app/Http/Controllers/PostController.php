@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -13,7 +16,16 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index');
+        $posts = DB::table('posts')->limit(5)->get();
+
+        return view('posts.index',compact('posts'));
+    }
+
+    public function allPosts()
+    {
+        $posts = Post::all();
+
+        return view('posts.index',compact('posts'));
     }
 
     /**
@@ -45,7 +57,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $author = User::findOrFail($post->user_id);
+
+        return view('posts.show', compact(['post','author']));
     }
 
     /**

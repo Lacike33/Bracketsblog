@@ -32,3 +32,4 @@ Route::get('/zadanie', function () {
 Auth::routes();
 
 Route::resource('post','PostController');
+Route::post('/','PostController@allPosts');
