@@ -1,6 +1,8 @@
 <?php
 
+use App\Tag;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TagsTableSeeder extends Seeder
 {
@@ -11,6 +13,8 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('tags')->delete();
+
+        factory(Tag::class,5)->create();
     }
 }

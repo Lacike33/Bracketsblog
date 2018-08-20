@@ -42,6 +42,9 @@
 
                 @auth
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ url('user', Auth::user()->id ) }}">My post</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('post.create') }}">New post</a>
                     </li>
                 @endauth

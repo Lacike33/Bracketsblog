@@ -27,15 +27,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function posts()
-    {
-        return '';
-    }
-
-
     public function getFullnameAttribute()
     {
         return ucfirst( $this->firstname ) .' '. ucfirst($this->lastname);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
     }
 
 }

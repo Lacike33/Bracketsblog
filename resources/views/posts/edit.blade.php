@@ -1,6 +1,6 @@
 @extends('layouts.cleanblog')
 
-@section('title',isset($title) ? $title : 'New post')
+@section('title', 'Edit post')
 
 @section('content')
     <!-- Page Header -->
@@ -10,8 +10,8 @@
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="site-heading">
-                        <h1>{{ isset($head) ? $head : 'New Post' }}</h1>
-                        <span class="subheading">{{ isset($subhead) ? $subhead :  'Vytvorenie noveho postu' }}</span>
+                        <h1>{{ isset($head) ? $head : 'Edit Post' }}</h1>
+                        <span class="subheading">Editovanie existujuceho postu.</span>
                     </div>
                 </div>
             </div>
@@ -33,8 +33,10 @@
                     </div>
                 @endif
 
-                <form action="{{ URL::to('post') }}" method="post" id="postForm" novalidate>
-                    {{ csrf_field() }}
+                <form action="{{ route('post.update',$post->id) }}" method="post" id="editPost" novalidate>
+                    <input type="hidden" name="_method" value="PUT">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                     @include('posts.form')
                 </form>
 

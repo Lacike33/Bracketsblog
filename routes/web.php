@@ -29,7 +29,9 @@ Route::get('/zadanie', function () {
     return view('zadanie');
 })->name('zadanie');
 
+Route::get('user/{id}','UserController@show');
+Route::get('tag/{id}','TagController@show');
+
 Auth::routes();
 
 Route::resource('post','PostController');
-Route::post('/','PostController@allPosts');

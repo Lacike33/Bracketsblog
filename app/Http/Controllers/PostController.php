@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBlogPost;
 use App\Post;
-use App\User;
+use App\Tag;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -16,7 +17,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = DB::table('posts')->limit(5)->get();
+//        $posts = DB::table('posts')->limit(5)->get();
+        $posts = Post::orderBy('created_at','desc')->get();
 
         return view('posts.index',compact('posts'));
     }
@@ -35,7 +37,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.new');
+        $tags = Tag::all();
+
+        return view('posts.create', compact('tags'));
     }
 
     /**
@@ -44,9 +48,20 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBlogPost $request)
     {
-        //
+//        $validatedData = $request->validate([
+//            'title' => 'required|unique:posts|max:255',
+//            'description' => 'required|max:255',
+//            'content' => 'required',
+//            'tags' => 'array'
+//        ]);
+
+        $post = Auth::user()->posts()->create( $request->all() );
+
+        $post->tags()->sync( $request->get('tags') ?: [] );
+
+        return redirect()->route('post.index');
     }
 
     /**
@@ -58,9 +73,8 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        $author = User::findOrFail($post->user_id);
 
-        return view('posts.show', compact(['post','author']));
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -71,7 +85,15 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $tags = Tag::all();
+
+        $this->authorize('edit-post',$post);
+
+        return view('posts.edit')
+            ->with('post',$post)
+            ->with('tags', $tags)
+            ->with('head', $post->title);
     }
 
     /**
@@ -81,9 +103,16 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreBlogPost $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $this->authorize('edit-post',$post);
+
+        $post->update( $request->all() );
+        $post->tags()->sync( $request->input('tags') ? : []);
+
+        return redirect()->route('post.show', $post->id );
     }
 
     /**
