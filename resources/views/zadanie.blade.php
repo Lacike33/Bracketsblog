@@ -67,6 +67,7 @@
         <p>Pri tvorbe Blogu sú použité <strong>Accessor</strong> a <strong>Mutator</strong>.</p>
         <p>Testovacie dáta sú generované cez pripravené Factory.</p>
         <p>Základná funkcionalita je rozšírená o Tags, čo užívateľovi umožňuje vylistovať príspevky podľa Tagu.</p>
+        <p>V blogu je možné pridávať nové posty , len registrovaným užívateľom, a navyše Post je možné aj editovať užívateľom, ktorý Post vytvoril.</p>
     </div>
 
 @endsection
