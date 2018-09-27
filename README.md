@@ -1,4 +1,4 @@
-# Bracketsblog
+# myBlog
 Testovaci blog v PHP frameworku Laravel.
 
 
