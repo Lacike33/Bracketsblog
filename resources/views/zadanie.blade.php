@@ -61,9 +61,9 @@
         </p>
         <h4>BACKEND</H4>
         <p>
-            Zdrojové kódy su uložené na public repozitári: <a href="https://github.com/Lacike33/Bracketsblog">GITHUB</a><br>
+            Zdrojové kódy su uložené na public repozitári: <a href="https://github.com/Lacike33/MyBlog">GITHUB</a><br>
         </p>
-        <p>Aplikácia je nasadená na živý server za pomoci Heroku a automatického <strong>DEPLOY</strong> a aplikácia je dostupná na <a href="https://bracketsblog.herokuapp.com">bracketsblog.herokuapp.com</a></p>
+        <p>Aplikácia je nasadená na živý server za pomoci Heroku a automatického <strong>DEPLOY</strong> a aplikácia je dostupná na <a href="https://mojprvyblog.herokuapp.com">bracketsblog.herokuapp.com</a></p>
         <p>Pri tvorbe Blogu sú použité <strong>Accessor</strong> a <strong>Mutator</strong>.</p>
         <p>Testovacie dáta sú generované cez pripravené Factory.</p>
         <p>Základná funkcionalita je rozšírená o Tags, čo užívateľovi umožňuje vylistovať príspevky podľa Tagu.</p>
